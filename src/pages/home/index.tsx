@@ -1,8 +1,15 @@
 import Icon from "../../components/ui/icon";
+import { useTheme } from "../../core/provider/darkMode";
 
 function HomePage() {
+  const {darkMode,modeButton}=useTheme()
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <div className="w-full h-screen flex items-center justify-center flex-col">
+      <div>
+        <button onClick={modeButton}>
+          {darkMode ? ('*'):(')')}
+        </button>
+      </div>
       <div className="w-[90%] h-15 bg-indigo-400 flex items-center justify-between">
         <Icon name="logo" className="text-white" />
         <div className="w-28 h-9 border border-green-300  rounded-[40px] px-1 flex items-center justify-between">
