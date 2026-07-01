@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { getCookie } from "../../../lib/cookie.js";
-import type { userRoleCartStreet } from "../../../lib/roles.js";
-import { REDIRECT_URLS, ROLE_ACCESS, VALID_ROLES } from "../../../lib/roles.js";
+import { getCookie } from "../../lib/cookie.js";
+import type { userRoleCartStreet } from "../../lib/roles.js";
+import { REDIRECT_URLS, ROLE_ACCESS, VALID_ROLES } from "../../lib/roles.js";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useHeaderAction } from '../../../core/provider/HeaderActionProvider/HeaderAction';
+// import { useHeaderAction } from '../../../core/provider/HeaderActionProvider/HeaderAction';
 
 interface MainLayoutProps {
     showFooter?: boolean;
@@ -15,7 +15,7 @@ interface MainLayoutProps {
 export default function MainLayout({
     navItems = []
 }: MainLayoutProps) {
-    const { action } = useHeaderAction();
+    // const { action } = useHeaderAction();
     const location = useLocation();
     const noFooterRoutes = [
         "/customer/profile/logout",
