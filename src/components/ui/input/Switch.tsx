@@ -1,5 +1,3 @@
-import React from "react";
-
 interface CustomSwitchProps {
   id?: string;
   name?: string;
@@ -52,7 +50,7 @@ export default function Switch({
             transition-colors duration-200 ease-in-out
             peer-checked:bg-brand-600
             after:content-['']
-            after:absolute after:top-1 after:left-[4px]
+            after:absolute after:top-1 after:left-1
             after:bg-white after:rounded-full after:h-6 after:w-6
             after:transition-all after:duration-200
             peer-checked:after:translate-x-6

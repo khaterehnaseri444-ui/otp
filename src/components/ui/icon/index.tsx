@@ -1,5 +1,3 @@
-import React from "react";
-
 interface IconProps {
     name: string;
     size?: number | string;
@@ -10,7 +8,7 @@ interface IconProps {
 export default function Icon({ name, size = 24, className = "", color }: IconProps) {
     return (
         <img
-            src={`/app/assets/icons/${name}.svg`}
+            src={`/assets/${name}.svg`}
             alt={name}
             width={size}
             height={size}

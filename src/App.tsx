@@ -1,22 +1,17 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import ProtectedRoute from './core/provider/ProtectedRoute'
-import Homeee from './pages'
 import { HeaderActionsProvider } from './core/provider/HeaderActionProvider/HeaderAction'
+import HomePage from './pages/home'
 
 function App() {
 
   return (
     <HeaderActionsProvider>
       <BrowserRouter>
-        {/* <ToastProvider /> */}
-        {/* <ProtectedRoute> */}
           <Routes>
-            <Route path='/' element={<Homeee/>} />
+            <Route path='/' element={<HomePage/>} />
           </Routes>
-        {/* </ProtectedRoute> */}
       </BrowserRouter>
-    // </HeaderActionsProvider>
+    </HeaderActionsProvider>
   )
 }
 
