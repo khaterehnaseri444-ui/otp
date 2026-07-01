@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-// import { useHeaderAction } from '../../../core/provider/HeaderActionProvider/HeaderAction';
+import { useHeaderAction } from '../../core/provider/HeaderActionProvider/HeaderAction';
 
 interface MainLayoutProps {
     showFooter?: boolean;
@@ -15,7 +15,7 @@ interface MainLayoutProps {
 export default function MainLayout({
     navItems = []
 }: MainLayoutProps) {
-    // const { action } = useHeaderAction();
+    const { action } = useHeaderAction();
     const location = useLocation();
     const noFooterRoutes = [
         "/customer/profile/logout",
@@ -62,9 +62,9 @@ export default function MainLayout({
                                 <img src="/app/assets/images/logo.png" className='w-[19%]' alt="" />
                             </div>
                         </div>
-                        <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+                        {/* <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
                             <Bell className="w-6 h-6 text-brand-700" />
-                        </button>
+                        </button> */}
                     </>
                 ) : (
                     <div className="flex-1">{action}</div>

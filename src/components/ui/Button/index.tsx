@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "../../../lib/cn.js";
+import { cn } from "../../../core/lib/cn";
 import { Loader2 } from "lucide-react";
 export type ButtonVariant = "solid" | "outline" | "ghost" | "soft" | "link";
 export type ButtonColor = "primary" | "danger" | "success" | "warning" | "neutral" | "sky";
@@ -155,6 +155,7 @@ export const ButtonToggle = ({ isTrue,
   return (
     <button
       disabled={disabled}
+      title="title"
       className={cn(
         isTrue ? onPrimary : offPrimaryColor,
         'relative flex items-center justify-center disabled:cursor-not-allowed disabled:bg-neutral-300 rounded-full h-[32px] w-[56px] transition-colors duration-500 ease-in-out'
