@@ -9,7 +9,7 @@ interface PinInputProps {
   error?: boolean;
   errorMessage?: string;
   size?: "lg" | "xl";
-  contactInformation: string;
+  // contactInformation: string;
   onEditClick?: () => void;
   reSendCodeHandler: () => void;
 }
@@ -24,10 +24,10 @@ export function PinInput({
   value = "",
   onChange,
   error = false,
-  errorMessage = "کد وارد شده صحیح نمی‌باشد",
+  errorMessage = "invalid code",
   size = "xl",
-  contactInformation,
-  onEditClick,
+  // contactInformation,
+  // onEditClick,
   reSendCodeHandler,
 }: PinInputProps) {
   const [time, setTime] = useState<string>("01:00");
@@ -57,8 +57,8 @@ export function PinInput({
   }, [error]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    let seconds = 60;
+    let timer: ReturnType<typeof setTimeout>;
+    let seconds = 30;
 
     const updateTimer = () => {
       const m = Math.floor(seconds / 60)
@@ -130,7 +130,7 @@ export function PinInput({
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
-      <div className="space-y-3 w-full">
+      {/* <div className="space-y-3 w-full">
         <p className="text-sm font-medium text-neutral-700">
           رمز عبور یکبار مصرف
           {" "}
@@ -154,9 +154,9 @@ export function PinInput({
         >
           تغییر شماره تماس
         </button>
-      </div>
+      </div> */}
 
-      <div className="flex flex-row-reverse gap-1 w-full justify-center" dir="ltr">
+      <div className="flex flex-row-reverse gap-1 w-full justify-center">
         {values.map((digit, index) => {
           const hasValue = digit.length > 0;
           return (
@@ -201,13 +201,16 @@ export function PinInput({
         {hasTime ? (
           <span className="text-brand-700 font-bold text-sm">{time}</span>
         ) : (
+          <>
+          <span>Having trouble? </span>
           <button
             type="button"
             onClick={retryTimerHandler}
             className="text-black font-medium text-sm hover:underline"
           >
-            ارسال مجدد کد تایید
+           Resend code
           </button>
+          </>
         )}
       </div>
     </div>

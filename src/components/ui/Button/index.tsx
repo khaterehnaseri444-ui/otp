@@ -158,15 +158,15 @@ export const ButtonToggle = ({ isTrue,
       title="title"
       className={cn(
         isTrue ? onPrimary : offPrimaryColor,
-        'relative flex items-center justify-center disabled:cursor-not-allowed disabled:bg-neutral-300 rounded-full h-[32px] w-[56px] transition-colors duration-500 ease-in-out'
+        'relative flex items-center justify-center disabled:cursor-not-allowed disabled:bg-neutral-300 rounded-full h-8 w-14 transition-colors duration-500 ease-in-out'
       )}
       type="button"
       onClick={onToggle}
     >
       <div
         className={cn(
-          disabled && '!bg-neutral-200',
-          isTrue ? 'translate-x-[50%]' : '-translate-x-[50%]',
+          disabled && '!bg-neutral-200!',
+          isTrue ? 'translate-x-[50%]' : 'translate-x-[-50%]',
           isTrue ? onSecoundryColor : offSecoundryColor,
           'rounded-full w-6 h-6 transition-transform duration-500 ease-in-out'
         )}

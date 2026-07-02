@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "../../../lib/cn.js"; 
+import { cn } from "../../../core/lib/cn"; 
 interface RadioProps {
   id: string;
   checked: boolean;

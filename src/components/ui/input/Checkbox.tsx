@@ -43,7 +43,7 @@ export function CustomCheckbox({
             <div
                 onClick={handleChange}
                 className={cn(
-                    "w-7 h-7 rounded-md border-2 flex items-center justify-center transition-all duration-200",
+                    "w-7 h-5 rounded-md border-2 flex items-center justify-center transition-all duration-200",
                     isChecked
                         ? "bg-brand-600 border-brand-600 shadow-sm"
                         : "bg-white border-gray-400 hover:border-brand-500 hover:bg-brand-50",
@@ -52,7 +52,7 @@ export function CustomCheckbox({
             >
                 {isChecked && (
                     <svg
-                        className="w-5 h-5 text-white transition-all duration-200"
+                        className="w-5 h-3 text-white transition-all duration-200"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
