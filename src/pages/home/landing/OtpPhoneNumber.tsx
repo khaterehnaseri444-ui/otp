@@ -17,7 +17,7 @@ function OtpPhoneNumber() {
   const checkboxLabel: string =
     "By authorising CheQ, I can view all of my full loan details, bill and credit information";
   const sendOtpHandler = () => {
-    if (!phoneNumber && phoneNumber.length < 10) {
+    if (!phoneNumber || phoneNumber.length < 10) {
       setError("please enter your phone number");
       return;
     }
@@ -43,7 +43,7 @@ function OtpPhoneNumber() {
                 {darkMode ? <Icon name="theme" /> : <Icon name="logo" />}
               </button>
             </div>
-            <div className="w-28 h-9 border border-green-300  dark:border-amber-400 rounded-[40px] px-1 flex items-center justify-between">
+            <div className="w-28 h-9 border border-[#00000033]  dark:border-[#EAEAEA3D] rounded-[40px] px-1 flex items-center justify-between">
               <img
                 src="/assets/USA.png"
                 className="w-6 h-6 rounded-full"
@@ -61,7 +61,7 @@ function OtpPhoneNumber() {
             </p>
           </div>
           <div className="w-full h-20 flex items-center justify-between">
-            <div className="w-23 h-15 bg-pink-700 rounded-2xl flex items-center justify-between px-3">
+            <div className="w-23 h-15 dark:bg-[#ffffff2e] bg-[#0000000A] rounded-2xl flex items-center justify-between px-3">
               <img
                 src="/assets/USA.png"
                 className="w-6 h-6 rounded-full"
@@ -75,20 +75,24 @@ function OtpPhoneNumber() {
                 type="tel"
                 placeholder="000 000 0000"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  setError("");
+                }}
                 error={!!error}
                 errorMessage={error}
                 variant="outline"
                 inputSize="xl"
+                className="dark:bg-[#ffffff2e] bg-[#0000000A] border-0 rounded-2xl"
               />
             </div>
           </div>
-          <div className="w-full h-30 bg-green-400 flex">
+          <div className="w-full h-30 flex">
             <CustomCheckbox
               checked={termsStatus}
               onChange={setTermsStatus}
               label={checkboxLabel}
-              LableClassName="text-[13px]"
+              LableClassName="text-[13px] dark:text-[#EAEAEA99]"
             />
           </div>
           <Button
@@ -96,10 +100,16 @@ function OtpPhoneNumber() {
             disabled={!phoneNumber || !termsStatus}
             loading={loading}
             fullWidth
-            className={cn('h-12 rounded-2xl', phoneNumber && termsStatus ?'bg-white':'bg-#EAEAEA14')}
+            className={cn(
+              "h-12 rounded-2xl",
+              phoneNumber && termsStatus
+                ? "dark:bg-white dark:text-black bg-black text-white"
+                : "text-white dark:bg-white dark:text-black bg-black",
+            )}
           >
             Get OTP
           </Button>
+          {error && !loading && <p className="text-red-50">{error}</p>}
         </div>
       )}
       {step === "otp" && <OTP prevStep={prevStep} phoneNumber={phoneNumber} />}
