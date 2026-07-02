@@ -1,23 +1,14 @@
-import Icon from "../../components/ui/icon";
 import { useTheme } from "../../core/provider/darkMode";
+import OtpPhoneNumber from "./landing/OtpPhoneNumber";
 
 function HomePage() {
-  const {darkMode,modeButton}=useTheme()
+  const { darkMode, modeButton } = useTheme();
   return (
     <div className="w-full h-screen flex items-center justify-center flex-col">
       <div>
-        <button onClick={modeButton}>
-          {darkMode ? ('*'):(')')}
-        </button>
+        <button onClick={modeButton}>{darkMode ? "*" : ")"}</button>
       </div>
-      <div className="w-[90%] h-15 bg-indigo-400 flex items-center justify-between">
-        <Icon name="logo" className="text-white" />
-        <div className="w-28 h-9 border border-green-300  rounded-[40px] px-1 flex items-center justify-between">
-            <img src="/assets/USA.png" className="w-6 h-6 rounded-full" alt="usa"/>
-            <p className="text-[12px] font-medium">English</p>
-          <Icon name="selectbox" />
-        </div>
-      </div>
+      <OtpPhoneNumber />
     </div>
   );
 }
