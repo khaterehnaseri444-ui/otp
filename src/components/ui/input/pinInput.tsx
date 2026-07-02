@@ -156,7 +156,7 @@ export function PinInput({
         </button>
       </div> */}
 
-      <div className="flex flex-row-reverse gap-1 w-full justify-center">
+      <div className="flex gap-1 w-full justify-start">
         {values.map((digit, index) => {
           const hasValue = digit.length > 0;
           return (
@@ -176,7 +176,7 @@ export function PinInput({
               onFocus={handleFocus}
               disabled={false}
               className={cn(
-                "flex items-center justify-center text-center font-medium transition-all duration-200 outline-none rounded-2xl border-2",
+                "flex items-center justify-center text-center font-medium transition-all duration-200 outline-none rounded-2xl bg-[#0000000A] dark:bg-[#EAEAEA14]",
                 sizeClasses[size],
                 error
                   ? "border-red-500 text-red-500 bg-red-50"
@@ -197,16 +197,16 @@ export function PinInput({
         </span>
       )}
 
-      <div className="w-full text-center">
+      <div className="w-full">
         {hasTime ? (
-          <span className="text-brand-700 font-bold text-sm">{time}</span>
+          <span className="text-brand-700 font-bold text-sm dark:text-[#EAEAEA99]">Having trouble? Resend code in {time} sec</span>
         ) : (
           <>
           <span>Having trouble? </span>
           <button
             type="button"
             onClick={retryTimerHandler}
-            className="text-black font-medium text-sm hover:underline"
+            className="text-[#00B8F0] font-medium text-sm hover:underline"
           >
            Resend code
           </button>

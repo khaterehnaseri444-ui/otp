@@ -28,15 +28,15 @@ function OTP({
   };
 
   return (
-    <div className="w-full h-screen bg-indigo-400 flex items-center flex-col">
-      <div className="w-[90%] h-20 bg-pink-300 flex items-center justify-between">
+    <div className="w-full h-screen  flex items-center flex-col">
+      <div className="w-[90%] h-20  flex items-center justify-between">
         <div
           onClick={prevStep}
-          className="w-12 h-8 flex items-center justify-center rounded-[999px] bg-lime-200"
+          className="w-12 h-8 flex items-center justify-center rounded-[999px] bg-[#0000000A] dark:bg-[#00000033]  "
         >
-          <Icon name="back" />
+          <Icon name="back"/>
         </div>
-        <div className="w-28 h-9 border border-green-300  rounded-[40px] px-1 flex items-center justify-between">
+        <div className="w-28 h-9 border border-[#00000033]  dark:border-[#EAEAEA3D]  rounded-[40px] px-1 flex items-center justify-between">
           <img
             src="/assets/USA.png"
             className="w-6 h-6 rounded-full"
@@ -52,7 +52,7 @@ function OTP({
           Please enter 4digit OTP verification code sent to +1 {phoneNumber}
         </p>
       </div>
-      <div className="w-[90%] h-30 bg-lime-300 flex items-center">
+      <div className="w-[90%] h-40 flex items-center">
         <PinInput
           length={4}
           reSendCodeHandler={resendOtpHandler}
