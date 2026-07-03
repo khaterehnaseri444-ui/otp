@@ -1,6 +1,8 @@
+import CreateInfoForm from "./createInfoForm";
+
 function Signup() {
   return (
-    <div className="w-full h-screen flex justify-center">
+    <div className="w-full h-screen flex justify-start items-center flex-col">
       <div className="w-[90%] h-30 flex flex-col">
         <p className="text-[34px] font-bold">Create profile</p>
         <p className="text-[15px] dark:text-[#EAEAEA99]">
@@ -8,6 +10,7 @@ function Signup() {
           card
         </p>
       </div>
+      <CreateInfoForm />
     </div>
   );
 }
