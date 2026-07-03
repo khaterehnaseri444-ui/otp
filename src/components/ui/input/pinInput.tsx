@@ -12,11 +12,12 @@ interface PinInputProps {
   // contactInformation: string;
   onEditClick?: () => void;
   reSendCodeHandler?: () => void;
+  showtimer: boolean;
 }
 
 const sizeClasses = {
   lg: "w-12 h-12 text-lg",
-  xl: "w-14 h-14 text-xl"
+  xl: "w-14 h-14 text-xl",
 };
 
 export function PinInput({
@@ -29,6 +30,7 @@ export function PinInput({
   // contactInformation,
   // onEditClick,
   reSendCodeHandler,
+  showtimer = true,
 }: PinInputProps) {
   const [time, setTime] = useState<string>("01:00");
   const [hasTime, setHasTime] = useState<boolean>(true);
@@ -36,7 +38,7 @@ export function PinInput({
   const [isFirstLoad, setIsFirstLoad] = useState<boolean>(true);
 
   const [values, setValues] = useState<string[]>(() =>
-    Array.from({ length }, (_, i) => value[i] || "")
+    Array.from({ length }, (_, i) => value[i] || ""),
   );
 
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -57,6 +59,7 @@ export function PinInput({
   }, [error]);
 
   useEffect(() => {
+    if (!showtimer) return;
     let timer: ReturnType<typeof setTimeout>;
     let seconds = 30;
 
@@ -78,14 +81,17 @@ export function PinInput({
     updateTimer();
 
     return () => clearTimeout(timer);
-  }, [timerKey]);
+  }, [timerKey, showtimer]);
 
   useEffect(() => {
     const englishValue = toEnglishNumber(value);
     setValues(Array.from({ length }, (_, i) => englishValue[i] || ""));
   }, [value, length]);
 
-  const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     let val = e.target.value;
     val = toEnglishNumber(val);
     if (!/^\d*$/.test(val)) return;
@@ -99,7 +105,10 @@ export function PinInput({
     }
   };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
     if (e.key === "Backspace" && !values[index] && index > 0) {
       inputsRef.current[index - 1]?.focus();
     }
@@ -107,7 +116,10 @@ export function PinInput({
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    let text = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, length);
+    let text = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, length);
     text = toEnglishNumber(text);
     if (!text) return;
     const newValues = Array.from({ length }, (_, i) => text[i] || "");
@@ -184,7 +196,7 @@ export function PinInput({
                     ? "border-brand-400 text-black bg-brand-100"
                     : "border-gray-200 text-gray-900 hover:border-gray-300",
                 "focus:border-brand-400 focus:ring-2 focus:ring-brand-100",
-                "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
               )}
             />
           );
@@ -197,22 +209,26 @@ export function PinInput({
         </span>
       )}
 
-      <div className="w-full">
-        {hasTime ? (
-          <span className="text-brand-700 font-bold text-sm dark:text-[#EAEAEA99]">Having trouble? Resend code in {time} sec</span>
-        ) : (
-          <>
-          <span>Having trouble? </span>
-          <button
-            type="button"
-            onClick={retryTimerHandler}
-            className="text-[#00B8F0] font-medium text-sm hover:underline"
-          >
-           Resend code
-          </button>
-          </>
-        )}
-      </div>
+      {showtimer && (
+        <div className="w-full">
+          {hasTime ? (
+            <span className="text-brand-700 font-bold text-sm dark:text-[#EAEAEA99]">
+              Having trouble? Resend code in {time} sec
+            </span>
+          ) : (
+            <>
+              <span>Having trouble? </span>
+              <button
+                type="button"
+                onClick={retryTimerHandler}
+                className="text-[#00B8F0] font-medium text-sm hover:underline"
+              >
+                Resend code
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

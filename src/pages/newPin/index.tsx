@@ -11,7 +11,7 @@ function NewPin() {
         </p>
       </div>
       <div className="w-[90%] h-30">
-        <PinInput length={4} />
+        <PinInput length={4} showtimer={false}/>
       </div>
     </div>
   );

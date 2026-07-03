@@ -3,9 +3,7 @@ import { PinInput } from "../../components/ui/input/pinInput";
 
 const otp_code = "2124";
 function OTP({
-//   phoneNumber,
 }: {
-//   phoneNumber: string;
 }) {
   const [otpError, setOtpError] = useState<boolean>(false);
   const [otp, setOtp] = useState<string>("");
@@ -35,8 +33,8 @@ function OTP({
       <div className="w-[90%] h-40 flex items-center">
         <PinInput
           length={4}
+          showtimer={true}
           reSendCodeHandler={resendOtpHandler}
-        //   contactInformation={phoneNumber}
           onChange={(code) => {
             setOtp(code);
             setOtpError(false);
