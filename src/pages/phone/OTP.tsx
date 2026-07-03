@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PinInput } from "../../../components/ui/input/pinInput";
+import { PinInput } from "../../components/ui/input/pinInput";
 
 const otp_code = "2124";
 function OTP({

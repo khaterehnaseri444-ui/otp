@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Icon from "../../../components/ui/icon";
-import { Input } from "../../../components/ui/input/Input";
-import { CustomCheckbox } from "../../../components/ui/input/Checkbox";
-import { Button } from "../../../components/ui/Button";
+import Icon from "../../components/ui/icon";
+import { Input } from "../../components/ui/input/Input";
+import { CustomCheckbox } from "../../components/ui/input/Checkbox";
+import { Button } from "../../components/ui/Button";
 import OTP from "./OTP";
-import { cn } from "../../../core/lib/cn";
+import { cn } from "../../core/lib/cn";
 import { useNavigate } from "react-router-dom";
 type stepType = "phoneNumber" | "otp";
 function OtpPhoneNumber() {

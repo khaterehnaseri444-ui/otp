@@ -1,0 +1,14 @@
+import { Button } from "../../components/ui/Button";
+import Icon from "../../components/ui/icon";
+
+function Notification() {
+    return (
+        <div className="w-full h-screen flex items-center justify-center flex-col gap-5">
+            <Icon name="ring"/>
+            <Button className="w-49 h-12 rounded-[999px] dark:bg-white bg-black font-medium text-white dark:text-black">Enable Notification</Button>
+            <p className="text-[15px] dark:text-[#EAEAEA99]">remind me later</p>
+        </div>
+    );
+}
+
+export default Notification;
