@@ -11,7 +11,7 @@ interface PinInputProps {
   size?: "lg" | "xl";
   // contactInformation: string;
   onEditClick?: () => void;
-  reSendCodeHandler: () => void;
+  reSendCodeHandler?: () => void;
 }
 
 const sizeClasses = {
@@ -125,7 +125,7 @@ export function PinInput({
     setTimerKey((prev) => prev + 1);
     setHasTime(true);
     setTime("01:00");
-    reSendCodeHandler();
+    reSendCodeHandler?.();
   };
 
   return (
