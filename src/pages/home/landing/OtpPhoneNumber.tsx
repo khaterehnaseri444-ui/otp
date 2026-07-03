@@ -4,11 +4,11 @@ import { Input } from "../../../components/ui/input/Input";
 import { CustomCheckbox } from "../../../components/ui/input/Checkbox";
 import { Button } from "../../../components/ui/Button";
 import OTP from "./OTP";
-import { useTheme } from "../../../core/provider/darkMode";
 import { cn } from "../../../core/lib/cn";
+import { useNavigate } from "react-router-dom";
 type stepType = "phoneNumber" | "otp";
 function OtpPhoneNumber() {
-  const { darkMode, modeButton } = useTheme();
+  const navigate=useNavigate()
   const [step, setStep] = useState<stepType>("phoneNumber");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -28,31 +28,16 @@ function OtpPhoneNumber() {
     }
     setLoading(true);
     setError("");
-    setStep("otp");
+    navigate('/otp')
+    // setStep("otp");
   };
-  const prevStep = () => {
-    setStep("phoneNumber");
-  };
+  // const prevStep = () => {
+  //   setStep("phoneNumber");
+  // };
   return (
     <>
       {step === "phoneNumber" && (
         <div className="w-[90%] h-full flex flex-col">
-          <div className="w-full h-15 flex items-center justify-between">
-            <div>
-              <button onClick={modeButton}>
-                {darkMode ? <Icon name="theme" /> : <Icon name="logo" />}
-              </button>
-            </div>
-            <div className="w-28 h-9 border border-[#00000033]  dark:border-[#EAEAEA3D] rounded-[40px] px-1 flex items-center justify-between">
-              <img
-                src="/assets/USA.png"
-                className="w-6 h-6 rounded-full"
-                alt="usa"
-              />
-              <p className="text-[12px] font-medium">English</p>
-              <Icon name="selectbox" />
-            </div>
-          </div>
           <div className="w-full h-auto flex flex-col">
             <p className="text-[34px] font-bold">Phone number</p>
             <p className="text-[15px]">
@@ -112,7 +97,7 @@ function OtpPhoneNumber() {
           {error && !loading && <p className="text-red-50">{error}</p>}
         </div>
       )}
-      {step === "otp" && <OTP prevStep={prevStep} phoneNumber={phoneNumber} />}
+      {/* {step === "otp" && <OTP prevStep={prevStep} phoneNumber={phoneNumber} />} */}
     </>
   );
 }

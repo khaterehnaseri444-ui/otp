@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { PinInput } from "../../../components/ui/input/pinInput";
+import { PinInput } from "../../components/ui/input/pinInput";
 
 const otp_code = "2124";
 function OTP({
-  phoneNumber,
+//   phoneNumber,
 }: {
-  phoneNumber: string;
+//   phoneNumber: string;
 }) {
   const [otpError, setOtpError] = useState<boolean>(false);
   const [otp, setOtp] = useState<string>("");
@@ -29,7 +29,7 @@ function OTP({
       <div className="w-[90%] h-auto flex flex-col">
         <p className="text-[34px] font-bold">4 digit code</p>
         <p className="text-[15px]">
-          Please enter 4digit OTP verification code sent to +1 {phoneNumber}
+          Please enter 4digit OTP verification code sent to +1 
         </p>
       </div>
       <div className="w-[90%] h-40 flex items-center">
