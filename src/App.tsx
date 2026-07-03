@@ -7,6 +7,7 @@ import Signup from "./pages/signup";
 import NewPin from "./pages/newPin";
 import Notification from "./pages/notification";
 import PhonePage from "./pages/phone";
+import HomePage from "./pages/home";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
           <MainLayout>
             <Routes>
+              <Route path="/" element={<HomePage />} />
               <Route path="/digit/phone" element={<PhonePage />} />
               <Route path="/digit/otp" element={<OTP />} />
               <Route path="/digit/signup" element={<Signup />} />
