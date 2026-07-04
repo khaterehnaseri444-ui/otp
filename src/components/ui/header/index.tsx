@@ -7,10 +7,11 @@ function Header() {
   const location = useLocation();
   const digitHeader = location.pathname.startsWith("/digit/");
   const noLogoHeader = noLogoPages.includes(location.pathname);
+  const notifPage = location.pathname.startsWith("/notification");
   const { darkMode, modeButton } = useTheme();
-  const prevStep=()=>{
-    window.history.back()
-  }
+  const prevStep = () => {
+    window.history.back();
+  };
   return (
     <div className="w-full h-20 flex items-center justify-center">
       <div className="w-[90%] h-15 flex items-center justify-between">
@@ -18,7 +19,7 @@ function Header() {
           <div className="w-full flex items-center justify-between">
             {noLogoHeader ? (
               <div
-                  onClick={prevStep}
+                onClick={prevStep}
                 className="w-12 h-8 flex items-center justify-center rounded-[999px] bg-[#0000000A] dark:bg-[#00000033]  "
               >
                 <Icon name="back" />
@@ -39,7 +40,7 @@ function Header() {
             </div>
           </div>
         ) : (
-          <MainHeader />
+          <>{!notifPage && <MainHeader />}</>
         )}
       </div>
     </div>
