@@ -15,7 +15,9 @@ function NewPin() {
       newPin: pin,
     };
     setCookie("userInformation", JSON.stringify(userInformation), 1);
-    navigate("/notification");
+    if(newPin.length===4){
+      navigate("/notification");
+    }
   };
   return (
     <div className="w-full h-screen flex justify-start items-center flex-col">
