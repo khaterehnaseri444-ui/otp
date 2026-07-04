@@ -1,6 +1,22 @@
+import { useState } from "react";
 import { PinInput } from "../../components/ui/input/pinInput";
+import { getCookie, setCookie } from "../../core/lib/cookie";
+import { useNavigate } from "react-router-dom";
 
 function NewPin() {
+  const navigate = useNavigate();
+  const [newPin, setNewPin] = useState<string>("");
+  const getNameFromCookie = getCookie("fullName");
+
+  const pinHandler = (pin: string) => {
+    setNewPin(pin);
+    const userInformation = {
+      fullName: getNameFromCookie,
+      newPin: pin,
+    };
+    setCookie("userInformation", JSON.stringify(userInformation), 1);
+    navigate("/notification");
+  };
   return (
     <div className="w-full h-screen flex justify-start items-center flex-col">
       <div className="w-[90%] h-30 flex flex-col">
@@ -11,7 +27,12 @@ function NewPin() {
         </p>
       </div>
       <div className="w-[90%] h-30">
-        <PinInput length={4} showtimer={false}/>
+        <PinInput
+          length={4}
+          showtimer={false}
+          value={newPin}
+          onChange={pinHandler}
+        />
       </div>
     </div>
   );

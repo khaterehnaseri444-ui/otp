@@ -3,6 +3,7 @@ import { Input } from "../../../components/ui/input/Input";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/ui/Button";
 import { cn } from "../../../core/lib/cn";
+import { setCookie } from "../../../core/lib/cookie";
 
 function CreateInfoForm() {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ function CreateInfoForm() {
     setFullNameError(nameError)
     setEmailError(emailError)
     if (!nameError && !emailError) {
+      setCookie('fullName',fullName,1)
+      // setCookie('email',email,1)
       navigate("/digit/newPin");
     }
   };

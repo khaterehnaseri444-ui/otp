@@ -1,7 +1,5 @@
-
-
 export function getCookie(name: string): string | null {
-    if (typeof document === "undefined") return null;
+    // if (typeof document === "undefined") return null;
 
     const cookies = document.cookie.split("; ");
 
@@ -14,8 +12,6 @@ export function getCookie(name: string): string | null {
 
     return null;
 }
-
-
 
 export function setCookie(name: string, value: string, days: number): void {
     const date = new Date();
