@@ -17,8 +17,6 @@ function NewPin() {
         newPin: pin,
       };
       setCookie("userInformation", JSON.stringify(userInformation), 1);
-    console.log(document.cookie);
-    console.log(getCookie("userInformation"));
       navigate("/notification");
     }
   };
