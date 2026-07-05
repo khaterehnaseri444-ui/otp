@@ -1,40 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PinInput } from "../../components/ui/input/pinInput";
+import { useNavigate } from "react-router-dom";
 
 const otp_code = "2124";
-function OTP({
-}: {
-}) {
+function OTP() {
+  const navigate = useNavigate();
   const [otpError, setOtpError] = useState<boolean>(false);
   const [otp, setOtp] = useState<string>("");
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [trueCode, setTrueCode] = useState<boolean>(false);
 
-  const resendOtpHandler = () => {};
   const validationOtp = (code: string) => {
     if (code.length < 4) {
       setOtpError(true);
-      return;
+      return false;
     }
     if (code === otp_code) {
-      setIsLogin(true);
+      return true;
     } else {
       setOtpError(true);
+      return false;
     }
   };
 
+  useEffect(() => {
+    if (otp.length === 4 && !trueCode) {
+      setTrueCode(true);
+      const validOtp = validationOtp(otp);
+      if (validOtp) {
+        navigate("/digit/signup");
+      } else {
+        setTrueCode(false);
+      }
+    }
+  }, [otp, trueCode, navigate]);
   return (
     <div className="w-full h-screen  flex items-center flex-col">
       <div className="w-[90%] h-auto flex flex-col">
         <p className="text-[34px] font-bold">4 digit code</p>
         <p className="text-[15px]">
-          Please enter 4digit OTP verification code sent to +1 
+          Please enter 4digit OTP verification code sent to +1
         </p>
       </div>
       <div className="w-[90%] h-40 flex items-center">
         <PinInput
           length={4}
           showtimer={true}
-          reSendCodeHandler={resendOtpHandler}
           onChange={(code) => {
             setOtp(code);
             setOtpError(false);

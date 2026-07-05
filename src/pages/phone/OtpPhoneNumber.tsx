@@ -58,6 +58,7 @@ function OtpPhoneNumber() {
               }}
               error={!!error}
               errorMessage={error}
+              helperText={error}
               variant="outline"
               inputSize="xl"
               className="dark:bg-[#ffffff2e] bg-[#0000000A] border-0 rounded-2xl"
@@ -86,7 +87,7 @@ function OtpPhoneNumber() {
         >
           Get OTP
         </Button>
-        {error && !loading && <p className="text-red-50">{error}</p>}
+        {error && <p className="text-red-50">{error}</p>}
       </div>
     </>
   );

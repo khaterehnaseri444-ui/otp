@@ -38,6 +38,8 @@ function CreateInfoForm() {
   return (
     <div className="w-[90%] h-60 flex flex-col gap-5">
       <Input
+      // inputMode="numeric"
+      // pattern="[0-9]"
         placeholder="Full name (as per Gov ID)"
         value={fullName}
         onChange={(e) => setFullName(e.target.value)}
@@ -54,6 +56,7 @@ function CreateInfoForm() {
         fullWidth
       />
       <Button onClick={formHandler}
+      disabled={!fullName || !email}
        className={cn(
                   "h-12 rounded-2xl",
                   fullName && email
