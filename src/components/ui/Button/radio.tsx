@@ -76,7 +76,7 @@ function Radio({
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        style={{display:"none"}}
+        // style={{display:"none"}}
         name={name}
         {...rest}
       />   

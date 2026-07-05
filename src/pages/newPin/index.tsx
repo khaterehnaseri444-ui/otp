@@ -10,12 +10,15 @@ function NewPin() {
 
   const pinHandler = (pin: string) => {
     setNewPin(pin);
-    const userInformation = {
-      fullName: getNameFromCookie,
-      newPin: pin,
-    };
-    setCookie("userInformation", JSON.stringify(userInformation), 1);
-    if(newPin.length===4){
+
+    if (pin.length === 4) {
+      const userInformation = {
+        fullName: getNameFromCookie,
+        newPin: pin,
+      };
+      setCookie("userInformation", JSON.stringify(userInformation), 1);
+    console.log(document.cookie);
+    console.log(getCookie("userInformation"));
       navigate("/notification");
     }
   };

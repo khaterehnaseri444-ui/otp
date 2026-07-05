@@ -88,7 +88,7 @@ export function Button({
   loading = false,
   leftIcon,
   rightIcon,
-  rounded = "lg",
+  rounded = "xxl",
   disabled,
   children,
   type = "button",
